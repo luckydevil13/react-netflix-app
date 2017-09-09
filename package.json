@@ -1,0 +1,48 @@
+{
+  "name": "react-netflix-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/server/server.js",
+    "build-prod": "webpack --config ./config/webpack.prod.js",
+    "build-dev": "webpack --config ./config/webpack.dev.js",
+    "start-dev": "set NODE_ENV=development && npm run build-dev && npm start",
+    "start-prod": "set NODE_ENV=production && npm run build-prod && npm start"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.15.4",
+    "prop-types": "15.5.10",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-redux": "5.0.6",
+    "react-router": "4.2.0",
+    "redux": "3.7.2",
+    "redux-form": "^7.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.1.2",
+    "babel-preset-env": "1.6.0",
+    "babel-preset-react": "6.24.1",
+    "eslint": "4.6.1",
+    "eslint-config-airbnb": "15.1.0",
+    "eslint-import-resolver-webpack": "0.8.3",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "7.3.0",
+    "html-webpack-plugin": "2.30.1",
+    "jest": "21.0.2",
+    "prettier-eslint": "^8.0.0",
+    "react-hot-loader": "3.0.0-beta.7",
+    "uglifyjs-webpack-plugin": "0.4.6",
+    "webpack": "3.5.6",
+    "webpack-dev-middleware": "1.12.0",
+    "webpack-hot-middleware": "2.19.1",
+    "webpack-merge": "4.1.0"
+  }
+}
