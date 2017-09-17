@@ -10,6 +10,7 @@
     "no-console": "off",
     "no-debugger": "off",
     "comma-dangle": ["error", "never"],
-    "global-require": "off"
+    "global-require": "off",
+    "linebreak-style": "off"
   }
 }

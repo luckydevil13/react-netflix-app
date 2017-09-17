@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack'); // eslint-disable-line import/no-extraneous-dependencies
-const HtmlWebpackPlugin = require('html-webpack-plugin');  // eslint-disable-line import/no-extraneous-dependencies
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
   entry: {
@@ -22,7 +22,7 @@ module.exports = {
     loaders: [
       { test: /\.js$/, use: ['babel-loader', 'eslint-loader'], exclude: /node_modules/ },
       { test: /\.jsx$/, use: ['babel-loader', 'eslint-loader'], exclude: /node_modules/ },
-      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
     ]
   },
   plugins: [
