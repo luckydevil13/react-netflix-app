@@ -1,0 +1,15 @@
+.film-container {
+    height: 500px;
+    background: darkslategrey;
+    color: white;
+}
+
+.film-poster {
+    width: 40%;
+    height: 400px;
+    border-style: dashed;
+}
+
+.details {
+    width: 60%;
+}

@@ -7,6 +7,8 @@
   },
   "extends": ["airbnb"],
   "rules": {
+    "no-console": "off",
+    "no-debugger": "off",
     "comma-dangle": ["error", "never"],
     "global-require": "off"
   }
