@@ -7,3 +7,17 @@
 .margin-top {
     margin-top: 20px;
 }
+
+input {
+  padding-left: 10px;
+  width: 100%;
+  outline: 0;
+  border-width: 0 0 1px 0;
+  border-color: red;
+  background-color: inherit;
+  color: inherit;
+}
+
+input:focus {
+  border-width: 0 0 2px 0;
+}

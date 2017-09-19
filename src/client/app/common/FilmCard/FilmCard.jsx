@@ -1,20 +1,16 @@
 import React from 'react';
-import Genre from './Genre';
-import Title from './Title';
-import Image from './Image';
-import ReleaseDate from './ReleaseDate';
 import './FilmCard.css';
 
 const FilmCard = () => (
   <div className="film-card">
-    <Image />
+    <div className="center poster" />
     <div className="standart-padding-left standart-padding-right standart-margins">
       <div className="flex-container space-beetween align-center">
-        <Title />
-        <ReleaseDate />
+        <div className="title">title</div>
+        <div className="font-bold release-date">1997</div>
       </div>
       <div className="standart-margins">
-        <Genre />
+        Genre
       </div>
     </div>
   </div>

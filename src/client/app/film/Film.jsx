@@ -1,12 +1,6 @@
 import React from 'react';
 import Logo from '../common/Logo';
 import Button from '../common/Button';
-import Title from './Title';
-import Rating from './Rating';
-import ReleaseDate from './ReleaseDate';
-import Duration from './Duration';
-import Description from './Description';
-import ShowCast from './ShowCast';
 
 import './Film.css';
 
@@ -25,25 +19,25 @@ const Search = () => (
       <div className="details standart-padding-left">
 
         <div className="flex-container align-center ">
-          <div>
-            <Title />
-          </div>
+          <h1 className="film-title">Film title</h1>
           <div className="standart-padding-left">
-            <Rating />
+            <div className="circle-text">4.1</div>
           </div>
         </div>
 
         <div className="flex-container">
-          <div>
-            <ReleaseDate />
-          </div>
+          <div className="font-bold">1997</div>
           <div className="standart-padding-left">
-            <Duration />
+            <div className="font-bold">141 min</div>
           </div>
         </div>
 
-        <Description />
-        <ShowCast />
+        <h3 className="film-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h3>
+        <div className="film-cast">
+          <div>Director: director</div>
+          <br />
+          <div>Casts: director</div>
+        </div>
       </div>
     </div>
 

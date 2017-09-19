@@ -1,11 +1,8 @@
 import React from 'react';
-import Filter from './Filter';
-import SearchButton from './SearchButton';
-import SearchField from './SearchField';
 import Logo from '../common/Logo';
+import Button from '../common/Button';
 
 import './Search.css';
-
 
 const Search = () => (
   <div className="search-container standart-padding-left standart-padding-right">
@@ -17,11 +14,13 @@ const Search = () => (
     </div>
     <form action="/search">
       <div className="margin-top">
-        <SearchField />
+        <input className="font-larger" placeholder="Tarantino" type="text" />
       </div>
       <div className="font-bold margin-top flex-container align-center space-beetween">
-        <Filter />
-        <SearchButton />
+        <div>Search by <Button title="TITLE" isActiveRedBackground /><Button title="DIRECTOR" /></div>
+        <div className="font-larger">
+          <Button title="SEARCH" isActiveRedBackground />
+        </div>
       </div>
     </form>
   </div>
