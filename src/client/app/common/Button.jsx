@@ -9,7 +9,7 @@ const Button = (props) => {
   classes += props.isActiveRedColor ? 'selected-by-color-red ' : '';
 
   return (
-    <span className={classes}>{props.title}</span>
+    <span type="button" role="button" tabIndex="0" className={classes} onClick={props.onClickHandler}>{props.title}</span>
   );
 };
 
@@ -17,14 +17,16 @@ Button.propTypes = {
   title: PropTypes.string,
   isActiveRedBackground: PropTypes.Boolean,
   isActiveWhiteBackground: PropTypes.Boolean,
-  isActiveRedColor: PropTypes.Boolean
+  isActiveRedColor: PropTypes.Boolean,
+  onClickHandler: PropTypes.Func
 };
 
 Button.defaultProps = {
   title: 'button',
   isActiveRedBackground: false,
   isActiveRedColor: false,
-  isActiveWhiteBackground: false
+  isActiveWhiteBackground: false,
+  onClickHandler: () => {}
 };
 
 export default Button;

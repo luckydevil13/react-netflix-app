@@ -1,41 +1,16 @@
 import React from 'react';
-import Search from './search/Search'; // eslint-disable-line no-unused-vars
-import FilmsContainer from './common/FilmsContainer';
-import Logo from './common/Logo';
-import FilmsHeader from './common/FilmsHeader';
-import Film from './film/Film'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types';
 
 import './App.css';
 
-// class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
-//  render() {
-//    return (
-//      <div>
-//        <Search />
-//        <FilmsHeader />
-//        <FilmsContainer />
-//        <footer className="standart-padding-left">
-//          <Logo />
-//        </footer>
-//      </div>
-//    );
-//  }
-// }
+const App = props => (
+  <div>
+    {props.children}
+  </div>
+);
 
-class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    return (
-      <div>
-        <Film />
-        <FilmsHeader />
-        <FilmsContainer />
-        <footer className="standart-padding-left">
-          <Logo />
-        </footer>
-      </div>
-    );
-  }
-}
-
+App.propTypes = {
+  children: PropTypes.any.isRequired // eslint-disable-line react/forbid-prop-types
+};
 
 export default App;
