@@ -15,10 +15,10 @@ const Button = (props) => {
 
 Button.propTypes = {
   title: PropTypes.string,
-  isActiveRedBackground: PropTypes.Boolean,
-  isActiveWhiteBackground: PropTypes.Boolean,
-  isActiveRedColor: PropTypes.Boolean,
-  onClickHandler: PropTypes.Func
+  isActiveRedBackground: PropTypes.bool,
+  isActiveWhiteBackground: PropTypes.bool,
+  isActiveRedColor: PropTypes.bool,
+  onClickHandler: PropTypes.func
 };
 
 Button.defaultProps = {
