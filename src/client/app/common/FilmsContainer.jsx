@@ -1,20 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import FilmCard from './FilmCard/FilmCard';
 import './FilmsContainer.css';
 
-const FilmsContainer = props => (
-  <div className="films-container flex-container">
-    {props.filmSearchName ? <FilmCard /> : 'Not found'}
-  </div>
-);
+class FilmsContainer extends React.Component {
+  render() {
+    return (
+      <div className="films-container flex-container">
+        {this.props.searchResults.length ?
+          this.props.searchResults.map(film => (<FilmCard key={film.id} film={film} />)) : 'Not found'}
+      </div>
+    );
+  }
+}
 
-FilmsContainer.propTypes = {
-  filmSearchName: PropTypes.string
-};
+const mapStateToProps = state => ({
+  searchResults: state.searchResults
+});
 
-FilmsContainer.defaultProps = {
-  filmSearchName: ''
-};
-
-export default FilmsContainer;
+export default withRouter(connect(mapStateToProps)(FilmsContainer));

@@ -5,9 +5,7 @@
 }
 
 .film-poster {
-    width: 40%;
-    height: 400px;
-    border-style: dashed;
+  height: 400px;
 }
 
 .details {

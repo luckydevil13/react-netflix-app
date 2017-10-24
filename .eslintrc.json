@@ -9,8 +9,15 @@
   "rules": {
     "no-console": "off",
     "no-debugger": "off",
+    "no-nested-ternary": "off",
+    "no-use-before-define": "off",
+    "no-useless-constructor": "off",
+    "no-param-reassign": "off",
     "comma-dangle": ["error", "never"],
     "global-require": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "react/prefer-stateless-function": [0],
+    "react/prop-types": [0],
+    "react/jsx-no-bind": [0]
   }
 }

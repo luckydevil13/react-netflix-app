@@ -1,22 +1,26 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as api from '../movie-api';
 import Logo from '../common/Logo';
 import Button from '../common/Button';
 
 import './Search.css';
 
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
+    this.doSearch(props.match.params.query);
+
     this.state = {
-      value: props.filmSearchName || ''
+      value: props.filmSearchName || '',
+      searchBy: props.searchBy
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
   handleChange(event) {
     this.setState({ value: event.target.value });
@@ -24,7 +28,38 @@ class Search extends React.Component {
 
   handleSubmit() {
     event.preventDefault();
-    this.props.history.push(`/search/${this.state.value}`);
+    if (this.state.value) {
+      this.doSearch(this.state.value);
+      if (this.props.history.location.pathname !== `/search/${this.state.value}`) {
+        this.props.history.push(`/search/${this.state.value}`);
+      }
+    }
+  }
+
+  toggleSearchBy(by) {
+    event.preventDefault();
+    if (by !== this.state.searchBy) {
+      this.props.dispatch({ type: 'SEARCH_BY', payload: by });
+      const updateSearch = this.props.match.params.query || this.state.value;
+      this.state.searchBy = by;
+      if (updateSearch) {
+        this.doSearch(updateSearch);
+      }
+    }
+  }
+
+  doSearch(query) {
+    const queryAction = this.state
+      ? (this.state.searchBy === 'title' ? 'getFilmsByQuery' : 'getFilmsByDirector')
+      : this.props.searchBy === 'title' ? 'getFilmsByQuery' : 'getFilmsByDirector';
+    api[queryAction](query)
+      .then(
+        (films) => {
+          const sortedFilms = films.sort((a, b) => b[this.props.sortBy] - a[this.props.sortBy]);
+          this.props.dispatch({ type: 'SEARCH_DONE', payload: sortedFilms });
+        },
+        () => this.props.dispatch({ type: 'SEARCH_FAILED' })
+      );
   }
 
   render() {
@@ -41,9 +76,11 @@ class Search extends React.Component {
             <input className="font-larger" value={this.state.value} placeholder="Tarantino" type="text" onChange={this.handleChange} />
           </div>
           <div className="font-bold margin-top flex-container align-center space-beetween">
-            <div>Search by <Button title="TITLE" isActiveRedBackground /><Button title="DIRECTOR" onClickHandler={this.handleSubmit} /></div>
+            <div>Search by
+              <Button title="TITLE" isActiveRedBackground={this.props.searchBy === 'title'} onClickHandler={this.toggleSearchBy.bind(this, 'title')} />
+              <Button title="DIRECTOR" isActiveRedBackground={this.props.searchBy === 'director'} onClickHandler={this.toggleSearchBy.bind(this, 'director')} /></div>
             <div className="font-larger">
-              <Button title="SEARCH" isActiveRedBackground />
+              <Button title="SEARCH" onClickHandler={this.handleSubmit} isActiveRedBackground />
             </div>
           </div>
         </form>
@@ -52,13 +89,8 @@ class Search extends React.Component {
   }
 }
 
-Search.propTypes = {
-  filmSearchName: PropTypes.string,
-  history: PropTypes.any.isRequired // eslint-disable-line react/forbid-prop-types
-};
+const mapStateToProps = state => ({
+  searchBy: state.searchBy
+});
 
-Search.defaultProps = {
-  filmSearchName: undefined
-};
-
-export default withRouter(Search);
+export default withRouter(connect(mapStateToProps)(Search));
